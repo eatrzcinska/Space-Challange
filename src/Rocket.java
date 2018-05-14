@@ -12,11 +12,11 @@ public class Rocket implements SpaceShip{
     }
 
 //konstruktor przeciążony
-    public Rocket (int rocketCost, int rocketWeight, int rocketMaxWeight){
-        this.rocketCost=rocketCost;
-        this.rocketWeight=rocketWeight;
-        this.rocketMaxWeight=rocketMaxWeight;
-    }
+//    public Rocket (int rocketCost, int rocketWeight, int rocketMaxWeight){
+//        this.rocketCost=rocketCost;
+//        this.rocketWeight=rocketWeight;
+//        this.rocketMaxWeight=rocketMaxWeight;
+//    }
 
 // metoda zostanie naspisana w klasach dziedziczących
     @Override
@@ -44,5 +44,6 @@ public class Rocket implements SpaceShip{
     public int carry(Item exampleItem) {
 
         currentWeight += exampleItem.weight;
+        return currentWeight;
     }
 }

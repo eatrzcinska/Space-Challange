@@ -12,7 +12,7 @@ public class Simulation {
         Scanner scanner = new Scanner (file);
 
         //tworzę obiekt tyu ArrayList, który będzie pobierał tylko obiekty typu Item
-        public ArrayList <Item> itemList = new ArrayList<>();
+        ArrayList <Item> itemList = new ArrayList<>();
 
         //pętla w której tworzę po kolei obiety z każdej linijki pliku
         while (scanner.hasNextLine()){
@@ -30,9 +30,12 @@ public class Simulation {
     }
 
     //metoda
-    public ArrayList loadU1 (ArrayList listaX){
+    public ArrayList loadU1 () throws Exception {
 
-        U1 u1_number1 = new U1(100000000, 10000, 18000);
+        ArrayList <Item> nowaLista = loadItems();
+        // U1 u1_number1 = new U1(100000000, 10000, 18000);
+
+        return nowaLista;
 
     }
 

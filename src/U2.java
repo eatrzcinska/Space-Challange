@@ -1,9 +1,15 @@
 public class U2 extends Rocket {
 
-    //konstruktor przeciążony
-    public U2(int rocketCost, int rocketWeight, int rocketMaxWeight) {
-        super(rocketCost, rocketWeight, rocketMaxWeight);
+    public U2 () {
+        this.rocketCost = 120000000;
+        this.rocketWeight = 18000;
+        this.rocketMaxWeight = 29000;
     }
+
+    //konstruktor przeciążony
+//    public U2(int rocketCost, int rocketWeight, int rocketMaxWeight) {
+//        super(rocketCost, rocketWeight, rocketMaxWeight);
+//    }
 
     public boolean launch(){
 

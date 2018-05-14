@@ -8,7 +8,7 @@ public class Simulation {
     public ArrayList loadItems () throws Exception {
 
         //pobieram plik phase-1
-        File file = new File("phase-1");
+        File file = new File("phase-1.txt");
         Scanner scanner = new Scanner (file);
 
         //tworzę obiekt tyu ArrayList, który będzie pobierał tylko obiekty typu Item
@@ -32,10 +32,69 @@ public class Simulation {
     //metoda
     public ArrayList loadU1 () throws Exception {
 
-        ArrayList <Item> nowaLista = loadItems();
-        // U1 u1_number1 = new U1(100000000, 10000, 18000);
+        ArrayList <Item> loadU1Items = loadItems();
 
-        return nowaLista;
+        ArrayList <U1> rocketU1List = new ArrayList<>();
+
+        while (loadU1Items.size()!=0){
+
+            U1 rocketU1 = new U1 ();
+            while(loadU1Items.get(0).weight + rocketU1.currentWeight<rocketU1.rocketMaxWeight){
+                rocketU1.currentWeight+=loadU1Items.get(0).weight;
+                loadU1Items.remove(0);
+            }
+            rocketU1List.add(rocketU1);
+        }
+
+        return rocketU1List;
+
+    }
+
+    //metoda
+    public ArrayList loadU2 () throws Exception {
+
+        ArrayList <Item> loadU2Items = loadItems();
+
+        ArrayList <U2> rocketU2List = new ArrayList<>();
+
+        while (loadU2Items.size()!=0){
+
+            U2 rocketU2 = new U2 ();
+            while(loadU2Items.get(0).weight + rocketU2.currentWeight<rocketU2.rocketMaxWeight){
+                rocketU2.currentWeight+=loadU2Items.get(0).weight;
+                loadU2Items.remove(0);
+            }
+            rocketU2List.add(rocketU2);
+        }
+
+        return rocketU2List;
+
+    }
+
+
+    //metoda
+    public int runSimulation (ArrayList <Rocket> rocket){
+        int totalBudget=0;
+
+        for (int i = 0; i<rocket.size() ; i++){
+            if (rocket.get(i).launch()){
+                System.out.println("Rakieta nr " + i + " szczęśliwie wystartowała");
+                totalBudget += rocket.get(0).rocketCost;
+                if(rocket.get(i).land()){
+                    System.out.println("Rakieta nr " + i + " szczęśliwie wylądowała");
+                }else{
+                    System.out.println("Rakieta nr "+ i + " rozbiła się przy lądowaniu");
+                    i--;
+                }
+            }else{
+                System.out.println("Rakieta nr " + i + " rozbiła się podczas startu");
+                totalBudget += rocket.get(i).rocketCost;
+                i--;
+            }
+        }
+        System.out.println("Misja zakończona");
+        System.out.println("Całkowity budżet wynosi " + totalBudget +"$");
+        return totalBudget;
 
     }
 

@@ -1,10 +1,13 @@
 public class U1 extends Rocket {
 
+
+
     public U1 () {
         this.rocketCost = 100000000;
         this.rocketWeight = 10000;
         this.rocketMaxWeight = 18000;
     }
+
 
     // konstruktor przeciążony
 //    public U1(int rocketCost, int rocketWeight, int rocketMaxWeight) {

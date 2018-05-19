@@ -46,4 +46,6 @@ public class Rocket implements SpaceShip{
         currentWeight += exampleItem.weight;
         return currentWeight;
     }
+
+
 }

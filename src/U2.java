@@ -4,6 +4,7 @@ public class U2 extends Rocket {
         this.rocketCost = 120000000;
         this.rocketWeight = 18000;
         this.rocketMaxWeight = 29000;
+
     }
 
     //konstruktor przeciążony

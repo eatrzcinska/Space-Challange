@@ -37,13 +37,23 @@ public class Simulation {
         ArrayList <U1> rocketU1List = new ArrayList<>();
 
         while (loadU1Items.size()!=0){
-
             U1 rocketU1 = new U1 ();
-            while(loadU1Items.get(0).weight + rocketU1.currentWeight<rocketU1.rocketMaxWeight){
+            rocketU1.currentWeight=10000;
+
+//            wykorzystanie metody can carry - potem
+//
+//            while (rocketU1.canCarry(loadU1Items.get(0))){
+//                rocketU1.carry(loadU1Items.get(0));
+//                loadU1Items.remove(0);
+//
+//            }
+
+            while(loadU1Items.size()!= 0 && (loadU1Items.get(0).weight + rocketU1.currentWeight < rocketU1.rocketMaxWeight)){
                 rocketU1.currentWeight+=loadU1Items.get(0).weight;
                 loadU1Items.remove(0);
             }
             rocketU1List.add(rocketU1);
+
         }
 
         return rocketU1List;
@@ -60,7 +70,8 @@ public class Simulation {
         while (loadU2Items.size()!=0){
 
             U2 rocketU2 = new U2 ();
-            while(loadU2Items.get(0).weight + rocketU2.currentWeight<rocketU2.rocketMaxWeight){
+//            rocketU2.currentWeight=rocketU2.rocketWeight;
+            while(loadU2Items.size()!=0 && (loadU2Items.get(0).weight + rocketU2.currentWeight < rocketU2.rocketMaxWeight)){
                 rocketU2.currentWeight+=loadU2Items.get(0).weight;
                 loadU2Items.remove(0);
             }
@@ -78,16 +89,16 @@ public class Simulation {
 
         for (int i = 0; i<rocket.size() ; i++){
             if (rocket.get(i).launch()){
-                System.out.println("Rakieta nr " + i + " szczęśliwie wystartowała");
+                System.out.println("Rakieta nr " + (i+1) + " szczęśliwie wystartowała");
                 totalBudget += rocket.get(0).rocketCost;
                 if(rocket.get(i).land()){
-                    System.out.println("Rakieta nr " + i + " szczęśliwie wylądowała");
+                    System.out.println("Rakieta nr " + (i+1) + " szczęśliwie wylądowała");
                 }else{
-                    System.out.println("Rakieta nr "+ i + " rozbiła się przy lądowaniu");
+                    System.out.println("Rakieta nr "+ (i+1) + " rozbiła się przy lądowaniu");
                     i--;
                 }
             }else{
-                System.out.println("Rakieta nr " + i + " rozbiła się podczas startu");
+                System.out.println("Rakieta nr " + (i+1) + " rozbiła się podczas startu");
                 totalBudget += rocket.get(i).rocketCost;
                 i--;
             }

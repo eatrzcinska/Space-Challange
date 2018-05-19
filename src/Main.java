@@ -8,6 +8,7 @@ public class Main {
 
         symulacja1.loadItems();
 
+
         System.out.println("Symulacja rakiety U1");
 
         symulacja1.runSimulation(symulacja1.loadU1());

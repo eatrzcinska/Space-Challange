@@ -1,51 +1,49 @@
 public class Rocket implements SpaceShip{
 
-    int rocketCost;                     //koszt rakiety
-    int rocketWeight;                   // waga rakiety
-    int rocketMaxWeight;                //dopuszczalna waga rakiety
-    double chanceOfLaunchExplosion;     //prawdopodbienstwo eksplozji przy starcie
-    double chanceOfLandingCrash;        //prawdopodobiennstwo eksplozji przy ladowaniu
-    int currentWeight = rocketWeight;   //aktualna waga
+    int rocketCost;
+    int rocketWeight;
+    int rocketMaxWeight;
+    int currentWeight;
+    double chanceOfLaunchExplosion;     //Chance of launch explosion
+    double chanceOfLandingCrash;        //Chance od landing crash
 
-//domyslny konstruktor klasy
+
+// Constructor
     public Rocket() {
+        rocketCost = 0;
+        rocketWeight = 0;
+        rocketMaxWeight = 0;
+        currentWeight = 0;
+        chanceOfLandingCrash = 0.0;
+        chanceOfLaunchExplosion =0.0;
     }
 
-//konstruktor przeciążony
-//    public Rocket (int rocketCost, int rocketWeight, int rocketMaxWeight){
-//        this.rocketCost=rocketCost;
-//        this.rocketWeight=rocketWeight;
-//        this.rocketMaxWeight=rocketMaxWeight;
-//    }
-
-// metoda zostanie naspisana w klasach dziedziczących
+// this method will be overridden in U1 and U2 classes
     @Override
     public boolean launch() {
         return true;
     }
-//metoda zostanie nadpisana w klasach dziedziczących
+
+// this method will be overridden in U1 and U2 classes
     @Override
     public boolean land() {
         return true;
     }
-//metoda nie zostanie nadpisana
+
+// this method will not be overridden in U1 and U2 classes
     @Override
     public boolean canCarry(Item exampleItem) {
-
-        if (exampleItem.weight<(rocketMaxWeight-currentWeight)){
+        if (exampleItem.weight<=(rocketMaxWeight-currentWeight)){
             return true;
         } else {
             return false;
         }
-
     }
-//metoda nie zostanie nadpisana
+
+// this method will be overridden in U1 and U2 classes
     @Override
-    public int carry(Item exampleItem) {
-
+    public void carry(Item exampleItem) {
         currentWeight += exampleItem.weight;
-        return currentWeight;
     }
-
 
 }

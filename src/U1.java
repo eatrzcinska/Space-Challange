@@ -1,28 +1,23 @@
 public class U1 extends Rocket {
 
-
-
+// Constructor
     public U1 () {
-        this.rocketCost = 100000000;
-        this.rocketWeight = 10000;
-        this.rocketMaxWeight = 18000;
+        rocketCost = 100000000;
+        rocketWeight = 10000;
+        rocketMaxWeight = 18000;
+        currentWeight = rocketWeight;
     }
 
-
-    // konstruktor przeciążony
-//    public U1(int rocketCost, int rocketWeight, int rocketMaxWeight) {
-//        super(rocketCost, rocketWeight, rocketMaxWeight);
-//  }
-
+// I am overriding launch method
     public boolean launch(){
 
-        //prawdopodobienstwo wybuchu
-        chanceOfLaunchExplosion =  0.05 * ((currentWeight - rocketWeight)/(rocketMaxWeight - rocketWeight));
+        // Chance of launch explosion according to formula
+       chanceOfLaunchExplosion =  0.5 * ((currentWeight - rocketWeight)/(rocketMaxWeight - rocketWeight));
 
-        //generuję losową liczbę w zakresie <0;1)
+        // I am generating a random double value grater than or equal 0.0 and less than 1.0
         double number = Math.random();
 
-        // wykorzystuję dystrybuantę
+        // I am checking if the rocket is crashed
         if(number > chanceOfLaunchExplosion){
             return true;
         } else {
@@ -30,15 +25,16 @@ public class U1 extends Rocket {
         }
     }
 
+    // I am overriding launch method
     public boolean land(){
 
-        //prawdopodobienstwo wybuchu
+        // Chance of landing crash according to formula
         chanceOfLandingCrash =  0.01 * ((currentWeight - rocketWeight)/(rocketMaxWeight - rocketWeight));
 
-        //generuję losową liczbę w zakresie <0;1)
+        // I am generating a random double value grater than or equal 0.0 and less than 1.0
         double number = Math.random();
 
-        // wykorzystuję dystrybuantę
+        // I am checking if the rocket is crashed
         if(number > chanceOfLandingCrash){
             return true;
         } else {
